@@ -1,6 +1,13 @@
 // Desafio 1
-function compareTrue() {
+function compareTrue(par1,par2) {
+  let resultado = '';
   
+  if(par1 && par2) {
+   resultado = true; 
+  }else{
+    resultado = false;
+  }
+  return resultado;
 }
 
 // Desafio 2
