@@ -39,13 +39,13 @@ function highestCount(array) {
   let maior = array[0];
 
   for (let i = 0; i < array.length; i++) {
-    if(array[i] > maior) {
+    if (array[i] > maior) {
       maior = array[i];
     }
   }
 
   for (let n = 0; n < array.length; n++) {
-    if(array[n] == maior) {
+    if (array[n] == maior) {
       cont++;
     }
   }
@@ -58,60 +58,85 @@ function catAndMouse(mouse, cat1, cat2) {
   let d1 = cat1 - mouse; //1 - 0 = 1
   let d2 = cat2 - mouse; //1-2 = -1 
 
-  if(d1 < 0){
+  if (d1 < 0) {
     d1 = d1 - d1 - d1;
   }
 
-  if(d2 < 0){
+  if (d2 < 0) {
     d2 = d2 - d2 - d2;
   }
 
-  // console.log('d1:'+d1);
-  // console.log('d2:'+d2);
-  // console.log('mouse:'+mouse);
-  // console.log('cat1:'+cat1);
-  // console.log('cat2:'+cat2);
-  
-  if(d1 > d2) {
+  if (d1 > d2) {
     resultado = 'cat2';
-  }else if (d2 > d1) {
+  } else if (d2 > d1) {
     resultado = 'cat1';
-  }else if(d1 == d2){
+  } else if (d1 == d2) {
     resultado = 'os gatos trombam e o rato foge';
   }
   return resultado;
 }
-
-console.log(catAndMouse(1,0,2));
 
 // Desafio 8
 function fizzBuzz(numeros) {
   let resultado = [];
   let cont = 1;
 
-for(let n of numeros){
-    if(n % 5 == 0 && n % 3 == 0 && cont == 1) {
-      cont++;  
+  for (let n of numeros) {
+    if (n % 5 == 0 && n % 3 == 0 && cont == 1) {
+      cont++;
       resultado.push('fizzBuzz');
-    }else if (n % 3 == 0){
-        resultado.push('fizz');
-    }else if (n % 5 == 0){
-        resultado.push('fizzBuzz');
-    }else{
-        resultado.push('bug!');
+    } else if (n % 3 == 0) {
+      resultado.push('fizz');
+    } else if (n % 5 == 0) {
+      resultado.push('fizzBuzz');
+    } else {
+      resultado.push('bug!');
     }
   }
-  return resultado;  
+  return resultado;
 }
-
-console.log(fizzBuzz([9, 25]));
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(string) {
+  let novaString = '';
+
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == 'a') {
+      novaString += '1';
+    } else if (string[i] == 'e') {
+      novaString += '2';
+    } else if (string[i] == 'i') {
+      novaString += '3';
+    } else if (string[i] == 'o') {
+      novaString += '4';
+    } else if (string[i] == 'u') {
+      novaString += '5';
+    } else {
+      novaString += string[i];
+    }
+  }
+  return novaString;
 }
-function decode() {
-  // seu código aqui
+
+function decode(string) {
+  let novaString = '';
+
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == '1') {
+      novaString += 'a';
+    } else if (string[i] == '2') {
+      novaString += 'e';
+    } else if (string[i] == '3') {
+      novaString += 'i';
+    } else if (string[i] == '4') {
+      novaString += 'o';
+    } else if (string[i] == '5') {
+      novaString += 'u';
+    } else {
+      novaString += string[i];
+    }
+  }
+  return novaString;
 }
 
 module.exports = {
