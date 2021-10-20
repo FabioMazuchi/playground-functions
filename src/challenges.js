@@ -79,22 +79,36 @@ function catAndMouse(mouse, cat1, cat2) {
 // Desafio 8
 function fizzBuzz(numeros) {
   let resultado = [];
-  let cont = 1;
+  let div = [];
+  let cont = 0;
 
   for (let n of numeros) {
-    if (n % 5 == 0 && n % 3 == 0 && cont == 1) {
-      cont++;
-      resultado.push('fizzBuzz');
-    } else if (n % 3 == 0) {
-      resultado.push('fizz');
-    } else if (n % 5 == 0) {
-      resultado.push('fizzBuzz');
-    } else {
-      resultado.push('bug!');
+    for (let i = 1; i <= n; i++) {
+      if (n % i == 0) {
+        div.push(i);
+      }
     }
+    for (let k = 1; k < div.length; k++) {
+      if (div.length <= 3 && div[k] == 3) {
+        resultado.push('fizz');
+      } else if (div.length <= 3 && div[k] == 5) {
+        resultado.push('buzz');
+      } else if (div[k] == 5 || div[k] == 3) {
+        cont++;
+        if (cont == 2) {
+          resultado.push('fizzBuzz');
+        }
+      } else if (div[k] % 3 !== 0 && div[k] % 5 !== 0) {
+        resultado.push('bug!');
+      }
+    }
+    cont = '';
+    div.splice(0, div.length);
   }
   return resultado;
 }
+
+console.log(fizzBuzz([2,15,7,9,45]));
 
 // Desafio 9
 function encode(string) {
