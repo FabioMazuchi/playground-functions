@@ -70,13 +70,36 @@ function generatePhoneNumber(array) {
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function triangleCheck(a, b, c) {
+  abs_b_c = Math.abs(b - c);
+  abs_a_c = Math.abs(a - c);
+  abs_a_b = Math.abs(a - b);
+
+  if (abs_b_c < a && a >= (b + c) || abs_a_c < b && b >= (a + c) || abs_a_b < c && c >= (a + c)) {
+    resultado = false;
+  } else {
+    resultado = true;
+  }
+  return resultado;
 }
 
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function hydrate(string) {
+  let soma = 0;
+  let resultado = '';
+
+  for (let s of string) {
+    console.log(s);
+    if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6' || s == '7' || s == '8' || s == '9') {
+      soma += Number(s);
+    }
+  }
+  if (soma > 1) {
+    resultado = soma + ' copos de água';
+  } else {
+    resultado = soma + ' copo de água';
+  }
+  return resultado;
 }
 
 module.exports = {
