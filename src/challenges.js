@@ -89,8 +89,6 @@ function decode(string) {
   return str1;
 }
 
-// console.log(decode('Hi There!'));
-
 module.exports = {
   calcArea,
   catAndMouse,

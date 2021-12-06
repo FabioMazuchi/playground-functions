@@ -2,24 +2,13 @@
 function techList(array, nome) {
   array = array.sort();
 
-  let novoArray = [];
-  let obj = {
-    tech: array[0],
-    name: nome
+  if (array.length !== 0) {
+    return array.map((el) => ({
+      tech: el,
+      name: nome,
+    }));
   }
-
-  if (array.length == 0) {
-    return 'Vazio!';
-  } else {
-    for (let a of array) {
-      obj = {
-        tech: a,
-        name: nome
-      }
-      novoArray.push(obj);
-    }
-    return novoArray;
-  }
+  return 'Vazio!';
 }
 
 // Desafio 11
@@ -35,7 +24,8 @@ function generatePhoneNumber(array) {
   } else {
     for (let n = 0; n < array.length; n++) {
       if (array[n] < 0 || array[n] > 9) {
-        resultado = 'não é possível gerar um número de telefone com esses valores';
+        resultado =
+          'não é possível gerar um número de telefone com esses valores';
         break;
       } else {
         for (let i = 0; i < array.length; i++) {
@@ -45,7 +35,8 @@ function generatePhoneNumber(array) {
           }
         }
         if (cont >= 3) {
-          resultado = 'não é possível gerar um número de telefone com esses valores';
+          resultado =
+            'não é possível gerar um número de telefone com esses valores';
           break;
         } else {
           if (n < 2) {
@@ -70,7 +61,11 @@ function triangleCheck(a, b, c) {
   abs_a_c = Math.abs(a - c);
   abs_a_b = Math.abs(a - b);
 
-  if (abs_b_c < a && a >= (b + c) || abs_a_c < b && b >= (a + c) || abs_a_b < c && c >= (a + c)) {
+  if (
+    (abs_b_c < a && a >= b + c) ||
+    (abs_a_c < b && b >= a + c) ||
+    (abs_a_b < c && c >= a + c)
+  ) {
     resultado = false;
   } else {
     resultado = true;
@@ -84,7 +79,17 @@ function hydrate(string) {
   let resultado = '';
 
   for (let s of string) {
-    if (s === '1' || s === '2' || s === '3' || s === '4' || s === '5' || s === '6' || s === '7' || s === '8' || s === '9') {
+    if (
+      s === '1' ||
+      s === '2' ||
+      s === '3' ||
+      s === '4' ||
+      s === '5' ||
+      s === '6' ||
+      s === '7' ||
+      s === '8' ||
+      s === '9'
+    ) {
       soma += Number(s);
     }
   }
