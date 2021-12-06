@@ -51,22 +51,39 @@ function generatePhoneNumber(array) {
   return templatePhone(array);
 }
 
+const triangBmenosC = (a, b, c) => {
+  const absBc = Math.abs(b - c);
+
+  if (absBc < a && a >= (b + c)) {
+    return false;
+  }
+  return true;
+};
+
+const triangAmenosC = (a, b, c) => {
+  const absAc = Math.abs(a - c);
+
+  if (absAc < b && b >= (a + c)) {
+    return false;
+  }
+  return true;
+};
+
+const triangAmenosB = (a, b, c) => {
+  const absAb = Math.abs(a - b);
+
+  if (absAb < c && c >= (a + c)) {
+    return false;
+  }
+  return true;
+};
+
 // Desafio 12
 function triangleCheck(a, b, c) {
-  abs_b_c = Math.abs(b - c);
-  abs_a_c = Math.abs(a - c);
-  abs_a_b = Math.abs(a - b);
-
-  if (
-    (abs_b_c < a && a >= b + c) ||
-    (abs_a_c < b && b >= a + c) ||
-    (abs_a_b < c && c >= a + c)
-  ) {
-    resultado = false;
-  } else {
-    resultado = true;
+  if (triangBmenosC(a, b, c) && triangAmenosC(a, b, c) && triangAmenosB(a, b, c)) {
+    return true;
   }
-  return resultado;
+  return false;
 }
 
 // Desafio 13
