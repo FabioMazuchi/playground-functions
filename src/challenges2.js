@@ -86,26 +86,20 @@ function triangleCheck(a, b, c) {
   return false;
 }
 
+const searchString = (string) => {
+  let soma = 0;
+  const res = string.split('').filter((s) => !s.search(/[1-9]/)).map((str) => Number(str));
+  res.forEach((n) => {
+    soma += n;
+  });
+  return soma;
+};
+
 // Desafio 13
 function hydrate(string) {
-  let soma = 0;
+  let soma = searchString(string);
   let resultado = '';
 
-  for (let s of string) {
-    if (
-      s === '1' ||
-      s === '2' ||
-      s === '3' ||
-      s === '4' ||
-      s === '5' ||
-      s === '6' ||
-      s === '7' ||
-      s === '8' ||
-      s === '9'
-    ) {
-      soma += Number(s);
-    }
-  }
   if (soma > 1) {
     resultado = `${soma} copos de água`;
   } else {
