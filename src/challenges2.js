@@ -1,11 +1,7 @@
 // Desafio 10
 function techList(array, nome) {
+  array = array.sort();
 
-  if (array.length === 5) {
-    array = array.sort();
-  }
-
-  let resultado = '';
   let novoArray = [];
   let obj = {
     tech: array[0],
@@ -13,7 +9,7 @@ function techList(array, nome) {
   }
 
   if (array.length == 0) {
-    resultado = 'Vazio!';
+    return 'Vazio!';
   } else {
     for (let a of array) {
       obj = {
@@ -22,9 +18,8 @@ function techList(array, nome) {
       }
       novoArray.push(obj);
     }
-    resultado = novoArray;
+    return novoArray;
   }
-  return resultado;
 }
 
 // Desafio 11
@@ -89,15 +84,14 @@ function hydrate(string) {
   let resultado = '';
 
   for (let s of string) {
-    console.log(s);
-    if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6' || s == '7' || s == '8' || s == '9') {
+    if (s === '1' || s === '2' || s === '3' || s === '4' || s === '5' || s === '6' || s === '7' || s === '8' || s === '9') {
       soma += Number(s);
     }
   }
   if (soma > 1) {
-    resultado = soma + ' copos de água';
+    resultado = `${soma} copos de água`;
   } else {
-    resultado = soma + ' copo de água';
+    resultado = `${soma} copo de água`;
   }
   return resultado;
 }
