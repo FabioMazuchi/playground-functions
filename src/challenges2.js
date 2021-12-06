@@ -11,48 +11,44 @@ function techList(array, nome) {
   return 'Vazio!';
 }
 
+const templatePhone = (array) => {
+  let string = '(';
+  array.forEach((n, i) => {
+    if (i < 2) {
+      string += n;
+    } else if (i < 3) {
+      string += `) ${n}`;
+    } else if (i < 7) {
+      string += n;
+    } else if (i < 8) {
+      string += `-${n}`;
+    } else {
+      string += n;
+    }
+  });
+  return string;
+};
+
+const checkMenorZero = (array) => array.some((n) => n < 0 || n > 9);
+
+const checkRepeat = (array) => {
+  const newArray = array.map((n) => n.toString());
+
+  const res = newArray.reduce((acc, atual) => {
+    acc[atual] = (acc[atual] || 0) + 1;
+    return acc;
+  }, {});
+  return Object.values(res).some((num) => num >= 3);
+};
+
 // Desafio 11
 function generatePhoneNumber(array) {
-  let digito = '';
-  let group1 = '';
-  let group2 = '';
-  let cont = 0;
-  let resultado;
-
   if (array.length !== 11) {
-    resultado = 'Array com tamanho incorreto.';
-  } else {
-    for (let n = 0; n < array.length; n++) {
-      if (array[n] < 0 || array[n] > 9) {
-        resultado =
-          'não é possível gerar um número de telefone com esses valores';
-        break;
-      } else {
-        for (let i = 0; i < array.length; i++) {
-          if (array[i] < 0 || array[i] > 9) {
-          } else if (array[n] == array[i]) {
-            cont++;
-          }
-        }
-        if (cont >= 3) {
-          resultado =
-            'não é possível gerar um número de telefone com esses valores';
-          break;
-        } else {
-          if (n < 2) {
-            digito += array[n];
-          } else if (n > 1 && n <= 6) {
-            group1 += array[n];
-          } else if (n > 6) {
-            group2 += array[n];
-          }
-        }
-        resultado = '(' + digito + ')' + ' ' + group1 + '-' + group2;
-        cont = '';
-      }
-    }
+    return 'Array com tamanho incorreto.';
+  } if (checkMenorZero(array) || checkRepeat(array)) {
+    return 'não é possível gerar um número de telefone com esses valores';
   }
-  return resultado;
+  return templatePhone(array);
 }
 
 // Desafio 12
